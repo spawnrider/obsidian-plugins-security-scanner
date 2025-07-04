@@ -33,9 +33,9 @@ $ npx obsidian-security-scanner scan --vault-path /path/to/your/vault --withCVE
 
 Plugin: Example Plugin (v1.0.0)
 ┌───────────┬─────────┬──────────┬────────────────────────────────────┐
-│ Component │ Version │ Severity │           Info (CVEs)            │
+│ Component │ Version │ Severity │           Info (CVEs)              │
 ├───────────┼─────────┼──────────┼────────────────────────────────────┤
-│ jquery    │  2.1.4  │  medium  │ CVE-2015-9251, CVE-2019-11358, C… │
+│ jquery    │  2.1.4  │  medium  │ CVE-2015-9251, CVE-2019-11358, C…  │
 └───────────┴─────────┴──────────┴────────────────────────────────────┘
 ```
 
