@@ -1,0 +1,121 @@
+rules:
+  # 1. Detect fetch calls
+  - id: suspicious-fetch
+    patterns:
+      - pattern: fetch($URL, ...)
+    languages:
+      - javascript
+      - typescript
+    message: "Potential data exfiltration via fetch()"
+    severity: WARNING
+    metadata:
+      cwe: "CWE-201: Information Exposure Through Sent Data"
+
+  # 2. Detect axios calls
+  - id: suspicious-axios
+    patterns:
+      - pattern: axios.$METHOD($URL, ...)
+    languages:
+      - javascript
+      - typescript
+    message: "Potential data exfiltration via axios"
+    severity: WARNING
+    metadata:
+      cwe: "CWE-201: Information Exposure Through Sent Data"
+
+  # 3. Detect XMLHttpRequest usage
+  - id: suspicious-xmlhttprequest
+    patterns:
+      - pattern: new XMLHttpRequest()
+    languages:
+      - javascript
+      - typescript
+    message: "Potential data exfiltration via XMLHttpRequest"
+    severity: WARNING
+    metadata:
+      cwe: "CWE-201"
+
+  # 4. Detect hardcoded URLs
+  - id: hardcoded-url
+    patterns:
+      - pattern: '"http'
+      - pattern: "`http"
+    languages:
+      - javascript
+      - typescript
+    message: "Hardcoded URL detected (check if sensitive data could leak)"
+    severity: WARNING
+    metadata:
+      cwe: "CWE-547: Use of Hard-coded Constants"
+
+  # 5. Detect eval
+  - id: dangerous-eval
+    patterns:
+      - pattern: eval($CODE)
+    languages:
+      - javascript
+      - typescript
+    message: "Dangerous use of eval"
+    severity: ERROR
+    metadata:
+      cwe: "CWE-95: Improper Neutralization of Directives in Dynamically Evaluated Code"
+
+  # 6. Detect new Function()
+  - id: dangerous-new-function
+    patterns:
+      - pattern: new Function($ARGS, ...)
+    languages:
+      - javascript
+      - typescript
+    message: "Dangerous use of new Function()"
+    severity: ERROR
+    metadata:
+      cwe: "CWE-95"
+
+  # 7. Detect setTimeout with string argument
+  - id: dangerous-settimeout-string
+    patterns:
+      - pattern: setTimeout($CODE, ...)
+    languages:
+      - javascript
+      - typescript
+    message: "Dangerous use of setTimeout with potential string evaluation"
+    severity: WARNING
+    metadata:
+      cwe: "CWE-95"
+
+  # 8. Detect fs module usage
+  - id: node-fs-access
+    languages:
+      - javascript
+      - typescript
+    patterns:
+      - pattern: fs.$FUNC(...)
+    message: "Potential filesystem access via fs module"
+    severity: WARNING
+    metadata:
+      cwe: "CWE-22: Path Traversal"
+
+  # 9. Detect reading environment variables
+  - id: reading-env-vars
+    languages:
+      - javascript
+      - typescript
+    patterns:
+      - pattern: process.env.$VAR
+    message: "Reading environment variables - ensure no secrets leak"
+    severity: INFO
+    metadata:
+      cwe: "CWE-200: Information Exposure"
+
+  # 10. Detect hardcoded secrets
+  - id: hardcoded-secret
+    patterns:
+      - pattern: /['"][A-Za-z0-9_\-]{20,}['"]/
+    message: "Possible hardcoded secret or token"
+    languages:
+      - javascript
+      - typescript
+    severity: WARNING
+    metadata:
+      cwe: "CWE-798: Use of Hard-coded Credentials"

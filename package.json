@@ -1,0 +1,35 @@
+{
+	"name": "obsidian_security_scanner",
+	"version": "1.0.0",
+	"description": "An Obsidian security scanner for community plugins.",
+	"keywords": [
+		"obsidian",
+		"security",
+		"scanner",
+		"sast",
+		"community"
+	],
+	"license": "MIT",
+	"author": "Yohann Ciurlik",
+	"type": "module",
+	"main": "index.ts",
+	"bin": {
+		"obsidian-security-scanner": "./dist/index.js"
+	},
+	"scripts": {
+		"build": "tsc",
+		"start": "node dist/index.js",
+		"lint": "npx @biomejs/biome lint ./"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.0.6",
+		"@types/node": "^24.0.7",
+		"ts-node": "^10.0.0",
+		"typescript": "^5.0.0"
+	},
+	"dependencies": {
+		"commander": "^14.0.0",
+		"consola": "^3.4.2",
+		"retire": "^5.2.7"
+	}
+}
