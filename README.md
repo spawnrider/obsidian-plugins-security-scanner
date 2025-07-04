@@ -2,7 +2,9 @@
 
 A CLI to scan community plugins in an Obsidian vault for known vulnerabilities.
 
-## Installation
+## Installation 
+> [!IMPORTANT]
+> Only for development purpose
 
 ```bash
 npm install
