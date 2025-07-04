@@ -16,7 +16,7 @@ npm run build
 To scan the plugins of a vault, use the `scan` command with the path to your Obsidian vault.
 
 ```bash
-npx obsidian-security-scanner scan --vault-path /path/to/your/vault
+npx obsidian_security_scanner scan --vault-path /path/to/your/vault
 ```
 
 ### Options
