@@ -14,22 +14,29 @@ npm run build
 To scan the plugins of a vault, use the `scan` command with the path to your Obsidian vault.
 
 ```bash
-node dist/index.js scan --vault-path /path/to/your/vault
+npx obsidian-security-scanner scan --vault-path /path/to/your/vault
 ```
+
+### Options
+
+| Option | Description |
+| --- | --- |
+| `-p, --vault-path <path>` | Path to the Obsidian vault (required) |
+| `--withCVE` | Include CVE information in the output (optional) |
 
 ### Example
 
 ```
-$ node dist/index.js scan --vault-path /path/to/your/vault
+$ npx obsidian-security-scanner scan --vault-path /path/to/your/vault --withCVE
 ✔ Scanning plugins for vulnerabilities...
-✔ Scan complete. Vulnerabilities found in the following plugins:
+✔ Scan complete. Vulnerabilities found in the following plugins:re
 
 Plugin: Example Plugin (v1.0.0)
-┌───────────┬─────────┬──────────┬──────────────────────────┐
-│ Component │ Version │ Severity │      Info (CVEs)       │
-├───────────┼─────────┼──────────┼──────────────────────────┤
-│ jquery    │  2.1.4  │  medium  │ CVE-2015-9251, CVE-2019… │
-└───────────┴─────────┴──────────┴──────────────────────────┘
+┌───────────┬─────────┬──────────┬────────────────────────────────────┐
+│ Component │ Version │ Severity │           Info (CVEs)            │
+├───────────┼─────────┼──────────┼────────────────────────────────────┤
+│ jquery    │  2.1.4  │  medium  │ CVE-2015-9251, CVE-2019-11358, C… │
+└───────────┴─────────┴──────────┴────────────────────────────────────┘
 ```
 
 ## License

@@ -101,7 +101,7 @@ async function main() {
 	program
 		.name("obsidian-security-scanner")
 		.description("A CLI to scan community plugins in an Obsidian vault.")
-		.version("1.0.0");
+		.version("1.1.0");
 
 	program
 		.command("scan")
